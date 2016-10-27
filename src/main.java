@@ -2,13 +2,20 @@
 public class main {
 	public static void main(String args[]){
 		
-		ThreadGroup g1 = new ThreadGroup("A");
-		Thread t1 = new Thread(g1,"t1");
-		Thread t2 = new Thread(g1,"t2");
-		Thread t3 = new Thread(g1,"t3");
-		Thread t4 = new Thread(g1,"t4");
+		ThreadGroup a = new ThreadGroup("G-A");
+		ThreadGroup b = new ThreadGroup("G-B");
+		ThreadGroup c = new ThreadGroup(a,"G-C");
 		
-		Enumeration e = new Enumeration(t3);
+		(new Thread(a, new GroupWorker())).start();
+		(new Thread(a, new GroupWorker())).start();
+		(new Thread(a, new GroupWorker())).start();
+		(new Thread(b, new GroupWorker())).start();
+		(new Thread(c, new GroupWorker())).start();
+		(new Thread(c, new GroupWorker())).start();
+		
+		GetRoot g = new GetRoot();
+		System.out.println(g.getRootThread());
+		Enumeration e = new Enumeration(g.getRootThread());
 		e.createArrayOfGroups();
 
 	}
