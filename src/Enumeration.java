@@ -8,15 +8,13 @@ public class Enumeration {
 		this.root = root; 
 	}
 	
-	public List<Thread> createArrayOfGroups(){
-		Thread[] temp = new Thread[root.activeCount()];
+	public Thread[] createArrayOfGroups(){
+		Thread[] allThreads = new Thread[root.activeCount()];
 		//Thread[] temp = new Thread[root.activeCount()];
-		root.enumerate(temp);
-		List<Thread> allThreads= new ArrayList<Thread>();
-		for(int i = 0; i<temp.length ; i++){
-			if(temp[i]!=null){
-				allThreads.add(i, temp[i]);
-				System.out.println(allThreads.get(i).getName());
+		root.enumerate(allThreads);
+		for(int i = 0; i<allThreads.length ; i++){
+			if(allThreads[i]!=null){
+				System.out.println("non null thread");
 			}
 		}
 		return allThreads;			
