@@ -1,5 +1,5 @@
 
-class GroupWorker implements Runnable {
+class RunnableTest implements Runnable {
 
 	@Override
 	public void run() {

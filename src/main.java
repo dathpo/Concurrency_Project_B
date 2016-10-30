@@ -1,7 +1,7 @@
 
 public class main {
 	public static void main(String args[]){		
-		CreateDummyGroups c1 = new CreateDummyGroups();
+		CreateGroupsAndThreads c1 = new CreateGroupsAndThreads();
 		GetRoot g = new GetRoot();
 		System.out.println(g.getRootThread());
 		Enumeration e = new Enumeration(g.getRootThread());
