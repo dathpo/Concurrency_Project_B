@@ -1,5 +1,6 @@
 public class CreateGroupsAndThreads {
-	public CreateGroupsAndThreads()
+	
+	public void build()
 	{
 		ThreadGroup a = new ThreadGroup("G-A");
 		ThreadGroup b = new ThreadGroup("G-B");
