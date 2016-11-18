@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 
@@ -28,26 +30,20 @@ public class Display extends JFrame {
 			setUP();
 			addLabel();
 			addTextBox();
-			displayText(allThreads);
-			addButton();
+			updateText(allThreads);
+			addButtons();
 			tidy();
 		}
 
 		private void setUP() {
-			Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-			this.setLocation(center);
 			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-			
-		
 			panel.setLayout(new BorderLayout());
 			this.add(panel);
-			this.setVisible(true);
-			
-			
 		}
 
 		private void addLabel() {
 			JLabel heading = new JLabel("THREAD TRACKER",SwingConstants.CENTER);
+			heading.setFont(new Font("Centaur", Font.BOLD, 32));
 			panel.add(heading, BorderLayout.PAGE_START);			
 		}
 
@@ -59,7 +55,7 @@ public class Display extends JFrame {
 
 		}
 
-		private void displayText(Thread [] allThreads) {
+		private void updateText(Thread [] allThreads) {
 			int i =0;
 			String groupName = "";
 			String outputText = "THREAD GROUPS AND INFORMATION DISPLAY";
@@ -74,18 +70,28 @@ public class Display extends JFrame {
 	        
 	   System.out.println(outputText);
 	   outputBox.setText(outputText);
-			
+	   outputBox.setFont(new Font("Centaur", Font.BOLD, 16));
+	   outputBox.setBackground(Color.BLACK);
+	   outputBox.setForeground(Color.WHITE);
 		}
 
-		private void addButton() {
+		private void addButtons() {
+			JPanel bottomPanel = new JPanel();
 			JButton refresh = new JButton("REFRESH");
-			panel.add(refresh, BorderLayout.PAGE_END);
+			JButton close = new JButton("CLOSE");
+			
+			bottomPanel.add(refresh);
+			bottomPanel.add(close);
+			
+			panel.add(bottomPanel, BorderLayout.PAGE_END);
 			
 		}
 
 		private void tidy() {
 			this.pack();		
-			setMinimumSize(new Dimension(800, 300));
+			this.setMinimumSize(new Dimension(800, 300));
+			this.setLocationRelativeTo(null);
+			this.setVisible(true);
 		}
 
 
