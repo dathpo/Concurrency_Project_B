@@ -25,12 +25,11 @@ public class Display extends JFrame {
 	JTextArea outputBox;
 	
 	
-		public Display(Thread[] allThreads){
+		public Display(){
 			super();
 			setUP();
 			addLabel();
 			addTextBox();
-			updateText(allThreads);
 			addButtons();
 			tidy();
 		}
@@ -55,7 +54,7 @@ public class Display extends JFrame {
 
 		}
 
-		private void updateText(Thread [] allThreads) {
+		public void updateText(Thread [] allThreads) {
 			int i =0;
 			String groupName = "";
 			String outputText = "THREAD GROUPS AND INFORMATION DISPLAY";
