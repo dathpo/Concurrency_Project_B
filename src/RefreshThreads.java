@@ -15,7 +15,7 @@ public class RefreshThreads implements Runnable {
 	@Override
 	public void run() {
         new GetThreads(d);
-    	exec.scheduleAtFixedRate(this, 1, 1, TimeUnit.SECONDS);
+    	exec.scheduleAtFixedRate(this, 10, 10, TimeUnit.SECONDS);
 	}
 
 }
