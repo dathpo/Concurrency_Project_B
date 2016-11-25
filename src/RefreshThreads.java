@@ -14,6 +14,7 @@ public class RefreshThreads implements Runnable {
 	
 	@Override
 	public void run() {
+		d.clearScrollPane();
         new GetThreads(d);
     	exec.scheduleAtFixedRate(this, 10, 10, TimeUnit.SECONDS);
 	}

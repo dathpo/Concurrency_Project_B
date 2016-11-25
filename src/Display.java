@@ -14,6 +14,7 @@ public class Display extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	JPanel panel = new JPanel();
+	JScrollPane scrollPane;
 
 	public Display() {
 		super();
@@ -51,8 +52,8 @@ public class Display extends JFrame {
 		String[] columnNames = { "Thread Group", "Thread Name", "ID", "State", "Deamon(True/False)" };
 		
 		JTable outputTable = new JTable(data, columnNames);
-		JScrollPane scrollPane = new JScrollPane(outputTable);
-		
+		scrollPane = new JScrollPane(outputTable);
+		 
 		panel.add(scrollPane, BorderLayout.CENTER);
 
 		for (; i < allThreads.length; i++) {
@@ -73,6 +74,10 @@ public class Display extends JFrame {
 					+ ",  IS Daemon:" + data[j][4]);
 		}
 		tidy();
+	}
+	
+	public void clearScrollPane(){
+			scrollPane.removeAll();
 	}
 
 	private void tidy() {
