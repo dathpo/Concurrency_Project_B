@@ -46,32 +46,31 @@ public class Display extends JFrame {
 
 	}
 
-	public void updateText(Thread[] allThreads) {
-		int i = 0;
+	public void updateTable(Thread[] allThreads) {
 		String[][] data = new String[allThreads.length][5];
-		String[] columnNames = { "Thread Group", "Thread Name", "ID", "State", "Deamon(True/False)" };
-		
-		JTable outputTable = new JTable(data, columnNames);
-		scrollPane = new JScrollPane(outputTable);
-		 
-		panel.add(scrollPane, BorderLayout.CENTER);
+		String[] columnNames = { "Thread Group", "Thread Name", "ID", "State", "Daemon? (True/False)" };
 
-		for (; i < allThreads.length; i++) {
+		for (int i = 0; i < allThreads.length; i++) {
 			data[i][0] = allThreads[i].getThreadGroup().getName() + "";
 			data[i][1] = allThreads[i].getName();
 			data[i][2] = allThreads[i].getId() + "";
 			data[i][3] = allThreads[i].getState() + "";
 			data[i][4] = allThreads[i].isDaemon() + "";
 		}
+		
+		JTable outputTable = new JTable(data, columnNames);
+		scrollPane = new JScrollPane(outputTable);
+		 
+		panel.add(scrollPane, BorderLayout.CENTER);
 
-		String groupName = "";
-		for (int j = 0; j < data.length; j++) {
-			if (!groupName.equals(allThreads[j].getThreadGroup().getName())) {
-				groupName = data[j][0];
-				System.out.println(groupName);
+		String curGroupName = "";
+		for (int i = 0; i < data.length; i++) {
+			if (!curGroupName.equals(data[i][0])) {
+				curGroupName = data[i][0];
+				System.out.println(curGroupName);
 			}
-			System.out.println("\tName: " + data[j][1] + ",  ID: " + data[j][2] + ",  State: " + data[j][3]
-					+ ",  IS Daemon:" + data[j][4]);
+			System.out.println("\t"+columnNames[1]+": " + data[i][1] + ",  "+columnNames[2]+": " + data[i][2] + ",  "+columnNames[3]+": " + data[i][3]
+					+ ",  "+ columnNames[4]+ ": " + data[i][4]);
 		}
 		tidy();
 	}

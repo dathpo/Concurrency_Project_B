@@ -11,7 +11,6 @@ public class RefreshThreads implements Runnable {
 		this.d = d;
 	}
 	
-	
 	@Override
 	public void run() {
 		d.clearScrollPane();

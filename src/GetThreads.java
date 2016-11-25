@@ -9,10 +9,9 @@ public class GetThreads {
 
 	private ThreadGroup getRoot() {
 		ThreadGroup currentThreadGroup = Thread.currentThread().getThreadGroup();
-		ThreadGroup rootGroup = currentThreadGroup.getParent();
-		while (currentThreadGroup.getParent() != null) {
-			rootGroup = currentThreadGroup.getParent();
-			currentThreadGroup = rootGroup;
+		ThreadGroup rootGroup = currentThreadGroup; 
+		while (rootGroup.getParent() != null) {
+			rootGroup = rootGroup.getParent();
 		}
 		return rootGroup;
 	}
@@ -24,6 +23,6 @@ public class GetThreads {
 	}
 
 	private void displayOutput(Thread[] allThreads) {
-		d.updateText(allThreads);
+		d.updateTable(allThreads);
 	}
 }
