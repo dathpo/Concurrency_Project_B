@@ -1,7 +1,6 @@
 public class CreateGroupsAndThreads {
 	
-	public void build()
-	{
+	public CreateGroupsAndThreads(){
 		ThreadGroup a = new ThreadGroup("G-A");
 		ThreadGroup b = new ThreadGroup(a,"G-B");
 		ThreadGroup c = new ThreadGroup(b,"G-C");
@@ -14,4 +13,5 @@ public class CreateGroupsAndThreads {
 		(new Thread(c, new RunnableTest())).start();
 		
 	}
+	
 }
